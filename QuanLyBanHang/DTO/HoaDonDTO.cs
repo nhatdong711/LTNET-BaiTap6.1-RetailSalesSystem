@@ -5,7 +5,7 @@ namespace QuanLyBanHang.DTO
         public int MaHD { get; set; }
         public DateTime NgayLap { get; set; }
         public int MaNV { get; set; }
-        public int? MaKH { get; set; }      // null = Khách lẻ
+        public int? MaKH { get; set; }      
         public decimal TongTien { get; set; }
         public List<ChiTietHoaDonDTO> ChiTiet { get; set; } = new();
     }
