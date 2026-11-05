@@ -6,12 +6,7 @@ namespace QuanLyBanHang.DAL
 {
     public class HoaDonDAL
     {
-        /// <summary>
-        /// Lập hóa đơn trong MỘT SqlTransaction (ACID):
-        ///  1. INSERT HoaDon  2. INSERT ChiTietHoaDon  3. Trừ SoLuongTon
-        ///  4. Cộng DiemTichLuy  5. Commit. Bất kỳ bước nào lỗi → Rollback toàn bộ.
-        /// </summary>
-        /// <returns>Mã hóa đơn vừa tạo.</returns>
+        
         public int LapHoaDon(HoaDonDTO hd, int diemCong)
         {
             using var conn = DBConnection.GetConnection();
@@ -19,7 +14,7 @@ namespace QuanLyBanHang.DAL
             SqlTransaction trans = conn.BeginTransaction();
             try
             {
-                // 1. Chèn hóa đơn, lấy MaHD vừa sinh
+            
                 int maHD;
                 using (var cmd = new SqlCommand(
                     "INSERT INTO HoaDon (NgayLap, MaNV, MaKH, TongTien) VALUES (GETDATE(), @nv, @kh, @tong); " +
@@ -34,7 +29,7 @@ namespace QuanLyBanHang.DAL
 
                 foreach (var ct in hd.ChiTiet)
                 {
-                    // 2. Chèn chi tiết hóa đơn
+                  
                     using (var cmd = new SqlCommand(
                         "INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, DonGia) VALUES (@hd, @sp, @sl, @gia)", conn, trans))
                     {
@@ -46,7 +41,7 @@ namespace QuanLyBanHang.DAL
                         cmd.ExecuteNonQuery();
                     }
 
-                    // 3. Trừ tồn kho – chỉ trừ khi còn đủ hàng
+                 
                     using (var cmd = new SqlCommand(
                         "UPDATE SanPham SET SoLuongTon = SoLuongTon - @sl WHERE MaSP = @sp AND SoLuongTon >= @sl", conn, trans))
                     {
@@ -54,7 +49,7 @@ namespace QuanLyBanHang.DAL
                         cmd.Parameters.Add("@sp", SqlDbType.VarChar, 20).Value = ct.MaSP;
                         if (cmd.ExecuteNonQuery() == 0)
                         {
-                            // SoLuongTon < SoLuong bán → hủy toàn bộ giao dịch
+                           
                             trans.Rollback();
                             throw new GiaoDichException(
                                 $"Sản phẩm \"{ct.TenSP}\" ({ct.MaSP}) không đủ tồn kho để bán {ct.SoLuong}.\n" +
@@ -63,7 +58,6 @@ namespace QuanLyBanHang.DAL
                     }
                 }
 
-                // 4. Cộng điểm tích lũy
                 if (hd.MaKH.HasValue && diemCong > 0)
                 {
                     using var cmd = new SqlCommand(
@@ -73,17 +67,16 @@ namespace QuanLyBanHang.DAL
                     cmd.ExecuteNonQuery();
                 }
 
-                // 5. Hoàn tất
                 trans.Commit();
                 return maHD;
             }
             catch (GiaoDichException)
             {
-                throw; // đã rollback ở trên
+                throw; 
             }
             catch (Exception ex)
             {
-                try { trans.Rollback(); } catch { /* kết nối đã đóng */ }
+                try { trans.Rollback(); } catch {}
                 throw new Exception("Lỗi khi lập hóa đơn, giao dịch đã ROLLBACK: " + ex.Message, ex);
             }
         }
@@ -101,7 +94,7 @@ namespace QuanLyBanHang.DAL
         }
     }
 
-    /// <summary>Lỗi nghiệp vụ trong giao dịch (đã Rollback).</summary>
+    
     public class GiaoDichException : Exception
     {
         public GiaoDichException(string msg) : base(msg) { }
