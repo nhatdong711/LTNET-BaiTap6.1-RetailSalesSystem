@@ -12,7 +12,6 @@ namespace QuanLyBanHang.BUS
 
         public static decimal TinhTongTien(IEnumerable<ChiTietHoaDonDTO> gio) => gio.Sum(x => x.ThanhTien);
 
-        /// <summary>Thanh toán: kiểm tra giỏ hàng rồi gọi giao dịch ở DAL.</summary>
         public int ThanhToan(int maNV, int? maKH, List<ChiTietHoaDonDTO> gioHang)
         {
             if (gioHang == null || gioHang.Count == 0) throw new ArgumentException("Giỏ hàng đang trống.");
