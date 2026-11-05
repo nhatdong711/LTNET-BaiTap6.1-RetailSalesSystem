@@ -3,7 +3,7 @@ using QuanLyBanHang.DTO;
 
 namespace QuanLyBanHang.GUI
 {
-    /// <summary>Quản lý danh mục Sản phẩm (CRUD + tìm kiếm theo tên/mã vạch).</summary>
+    
     public class FrmSanPham : Form
     {
         private readonly SanPhamBUS bus = new();
@@ -45,7 +45,7 @@ namespace QuanLyBanHang.GUI
                 txtTen.Text = r.Cells["TenSP"].Value.ToString();
                 numGia.Value = Convert.ToDecimal(r.Cells["GiaBan"].Value);
                 numTon.Value = Convert.ToInt32(r.Cells["SoLuongTon"].Value);
-                txtMa.ReadOnly = true; // khóa chính không cho sửa
+                txtMa.ReadOnly = true; 
             };
 
             Load += (s, e) => TaiDuLieu();
