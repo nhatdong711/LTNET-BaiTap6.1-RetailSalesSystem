@@ -4,7 +4,6 @@ using QuanLyBanHang.DTO;
 
 namespace QuanLyBanHang.BUS
 {
-    /// <summary>Kiểm tra nghiệp vụ trước khi gọi DAL. Lỗi nghiệp vụ ném ArgumentException.</summary>
     public class SanPhamBUS
     {
         private readonly SanPhamDAL dal = new();
