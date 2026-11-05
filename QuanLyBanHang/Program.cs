@@ -11,7 +11,7 @@ namespace QuanLyBanHang
             ApplicationConfiguration.Initialize();
             try
             {
-                // Tự tạo CSDL SalesDB + dữ liệu mẫu nếu chưa có
+            
                 DBConnection.KhoiTaoCSDL();
             }
             catch (Exception ex)
