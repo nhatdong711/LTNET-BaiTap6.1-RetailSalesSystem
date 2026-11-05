@@ -2,7 +2,7 @@ using QuanLyBanHang.BUS;
 
 namespace QuanLyBanHang.GUI
 {
-    /// <summary>Báo cáo – Thống kê: doanh thu (ExecuteScalar) và Top 5 bán chạy (SqlDataReader).</summary>
+    
     public class FrmThongKe : Form
     {
         private readonly ThongKeBUS bus = new();
