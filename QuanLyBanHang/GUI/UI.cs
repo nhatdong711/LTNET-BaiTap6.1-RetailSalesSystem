@@ -2,7 +2,7 @@ using Microsoft.Data.SqlClient;
 
 namespace QuanLyBanHang.GUI
 {
-    /// <summary>Hàm tiện ích tạo control và hiển thị lỗi thống nhất cho các Form.</summary>
+
     internal static class UI
     {
         public static readonly Font FontChu = new("Segoe UI", 10f);
@@ -19,7 +19,7 @@ namespace QuanLyBanHang.GUI
             f.StartPosition = FormStartPosition.CenterScreen;
             f.FormBorderStyle = FormBorderStyle.FixedSingle;
             f.MaximizeBox = false;
-            // Tự co giãn theo DPI màn hình (125%, 150%...) vì control được đặt theo pixel ở 96 DPI
+           
             f.AutoScaleMode = AutoScaleMode.None;
             f.Load += (s, e) =>
             {
@@ -35,7 +35,6 @@ namespace QuanLyBanHang.GUI
             };
         }
 
-        /// <summary>Nhân vị trí/kích thước mọi control con theo hệ số DPI.</summary>
         private static void PhongTo(Control cha, float k)
         {
             foreach (Control c in cha.Controls)
@@ -120,7 +119,6 @@ namespace QuanLyBanHang.GUI
             return g;
         }
 
-        /// <summary>Đổi tiêu đề cột và định dạng số tiền.</summary>
         public static void DatTieuDeCot(DataGridView g, params (string cot, string tieuDe)[] ds)
         {
             foreach (var (cot, tieuDe) in ds)
@@ -147,7 +145,6 @@ namespace QuanLyBanHang.GUI
         public static bool XacNhan(string msg) =>
             MessageBox.Show(msg, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
 
-        /// <summary>Hiển thị lỗi thân thiện: lỗi nghiệp vụ (BUS) và lỗi ràng buộc SQL.</summary>
         public static void BaoLoi(Exception ex)
         {
             string msg = ex.Message;
