@@ -1,7 +1,4 @@
--- =============================================================
--- Bài 6.1 - HỆ THỐNG QUẢN LÝ BÁN HÀNG & SIÊU THỊ MINI (SalesDB)
--- SQL Server / LocalDB. Chương trình tự chạy script này nếu CSDL chưa có.
--- =============================================================
+
 IF DB_ID(N'SalesDB') IS NULL
     CREATE DATABASE SalesDB;
 GO
@@ -46,7 +43,6 @@ CREATE TABLE ChiTietHoaDon (
 );
 GO
 
--- ---------------- Dữ liệu mẫu ----------------
 INSERT INTO NhanVien (TenNV, SoDienThoai, ChucVu) VALUES
 (N'Nguyễn Văn An',  '0901000001', N'Quản lý'),
 (N'Trần Thị Bình',  '0901000002', N'Thu ngân'),
@@ -67,7 +63,6 @@ INSERT INTO SanPham (MaSP, TenSP, GiaBan, SoLuongTon) VALUES
 ('8935001800019', N'Coca-Cola lon 330ml',          10000,  120),
 ('8934868106241', N'Nước giặt OMO 2.7kg',         159000,    5);
 
--- Một vài hóa đơn mẫu để có số liệu thống kê
 INSERT INTO HoaDon (NgayLap, MaNV, MaKH, TongTien) VALUES
 (DATEADD(DAY, -3, GETDATE()), 2, 1, 153000),
 (DATEADD(DAY, -1, GETDATE()), 3, NULL, 63000),
