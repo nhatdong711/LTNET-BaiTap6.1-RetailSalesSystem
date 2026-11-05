@@ -14,7 +14,6 @@ namespace QuanLyBanHang.BUS
         public bool Sua(KhachHangDTO kh) { KiemTra(kh); return dal.Sua(kh); }
         public bool Xoa(int ma) => dal.Xoa(ma);
 
-        /// <summary>Quy tắc tích điểm: cứ 100.000đ được 1 điểm.</summary>
         public static int TinhDiem(decimal tongTien) => (int)(tongTien / 100000);
 
         private static void KiemTra(KhachHangDTO kh)
