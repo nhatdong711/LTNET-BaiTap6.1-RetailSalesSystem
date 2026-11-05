@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 
 namespace QuanLyBanHang.DAL
 {
-    /// <summary>Quản lý chuỗi kết nối và khởi tạo CSDL SalesDB.</summary>
+   
     public static class DBConnection
     {
         public static string ConnStr =>
@@ -13,7 +13,7 @@ namespace QuanLyBanHang.DAL
 
         public static SqlConnection GetConnection() => new SqlConnection(ConnStr);
 
-        /// <summary>Nếu CSDL chưa tồn tại thì chạy Database/ScriptDB.sql (tách theo GO).</summary>
+    
         public static void KhoiTaoCSDL()
         {
             var builder = new SqlConnectionStringBuilder(ConnStr);
@@ -25,7 +25,7 @@ namespace QuanLyBanHang.DAL
             using (var check = new SqlCommand("SELECT DB_ID(@db)", conn))
             {
                 check.Parameters.AddWithValue("@db", dbName);
-                if (check.ExecuteScalar() != DBNull.Value) return; // đã có CSDL
+                if (check.ExecuteScalar() != DBNull.Value) return;
             }
 
             string path = Path.Combine(AppContext.BaseDirectory, "ScriptDB.sql");
