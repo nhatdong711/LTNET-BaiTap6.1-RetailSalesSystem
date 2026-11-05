@@ -6,7 +6,7 @@ using QuanLyBanHang.DTO;
 
 namespace QuanLyBanHang.GUI
 {
-    /// <summary>Màn hình Bán hàng / Lập hóa đơn – thanh toán bằng SqlTransaction.</summary>
+    
     public class FrmBanHang : Form
     {
         private readonly SanPhamBUS spBus = new();
@@ -24,12 +24,12 @@ namespace QuanLyBanHang.GUI
             UI.ChuanBiForm(this, "Bán hàng – Lập hóa đơn", 1100, 680);
             UI.TieuDe(this, "BÁN HÀNG / LẬP HÓA ĐƠN", 20, 12);
 
-            // --- Thông tin hóa đơn ---
+         
             UI.Nhan(this, "Nhân viên:", 20, 60);   cboNV = UI.Chon(this, 120, 60, 230);
             UI.Nhan(this, "Khách hàng:", 380, 60); cboKH = UI.Chon(this, 480, 60, 260);
             cboKH.SelectedIndexChanged += (s, e) => CapNhatTong();
 
-            // --- Chọn sản phẩm ---
+        
             var grp = new GroupBox { Text = "Thêm sản phẩm vào giỏ", Left = 20, Top = 100, Width = 720, Height = 120, Font = UI.FontDam };
             Controls.Add(grp);
             UI.Nhan(grp, "Quét mã vạch:", 12, 30); txtMaVach = UI.O(grp, 125, 30, 180);
@@ -50,7 +50,7 @@ namespace QuanLyBanHang.GUI
             lblTon = UI.Nhan(grp, "Tồn: –", 390, 72);
             UI.Nut(grp, "+ Thêm vào giỏ", 530, 68, 175).Click += (s, e) => ThemVaoGio();
 
-            // --- Giỏ hàng ---
+        
             UI.Nhan(this, "GIỎ HÀNG", 20, 230, true);
             dgvGio = UI.Luoi(this, 20, 255, 720, 270);
             dgvGio.AutoGenerateColumns = false;
@@ -75,7 +75,7 @@ namespace QuanLyBanHang.GUI
             btnTT.Height = 55; btnTT.Font = new Font("Segoe UI", 14f, FontStyle.Bold);
             btnTT.Click += (s, e) => ThanhToan();
 
-            // --- Lịch sử hóa đơn ---
+         
             UI.Nhan(this, "HÓA ĐƠN ĐÃ LẬP", 760, 60, true);
             dgvHoaDon = UI.Luoi(this, 760, 85, 320, 570);
 
