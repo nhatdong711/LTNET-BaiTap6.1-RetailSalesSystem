@@ -2,7 +2,7 @@ using QuanLyBanHang.BUS;
 
 namespace QuanLyBanHang.GUI
 {
-    /// <summary>Màn hình chính / tổng quan hệ thống.</summary>
+   
     public class FrmMain : Form
     {
         private readonly Label lblDoanhThuNgay, lblDoanhThuThang, lblSoSP, lblSoHD;
@@ -24,7 +24,7 @@ namespace QuanLyBanHang.GUI
                 Left = 28, Top = 50, ForeColor = Color.FromArgb(220, 255, 250)
             });
 
-            // Thẻ số liệu tổng quan
+         
             lblDoanhThuNgay = The("Doanh thu hôm nay", 24);
             lblDoanhThuThang = The("Doanh thu tháng này", 206);
             lblSoSP = The("Số mặt hàng", 388);
