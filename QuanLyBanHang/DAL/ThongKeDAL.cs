@@ -6,7 +6,6 @@ namespace QuanLyBanHang.DAL
 {
     public class ThongKeDAL
     {
-        /// <summary>Tổng doanh thu 1 ngày – dùng ExecuteScalar.</summary>
         public decimal DoanhThuNgay(DateTime ngay)
         {
             using var conn = DBConnection.GetConnection();
@@ -17,7 +16,6 @@ namespace QuanLyBanHang.DAL
             return Convert.ToDecimal(cmd.ExecuteScalar());
         }
 
-        /// <summary>Tổng doanh thu 1 tháng – dùng ExecuteScalar.</summary>
         public decimal DoanhThuThang(int thang, int nam)
         {
             using var conn = DBConnection.GetConnection();
@@ -29,7 +27,6 @@ namespace QuanLyBanHang.DAL
             return Convert.ToDecimal(cmd.ExecuteScalar());
         }
 
-        /// <summary>Top 5 sản phẩm bán chạy – đọc bằng SqlDataReader.</summary>
         public List<TopSanPhamDTO> Top5BanChay()
         {
             var ds = new List<TopSanPhamDTO>();
