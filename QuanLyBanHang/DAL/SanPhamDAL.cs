@@ -4,7 +4,7 @@ using QuanLyBanHang.DTO;
 
 namespace QuanLyBanHang.DAL
 {
-    /// <summary>Truy vấn bảng SanPham. Mọi câu lệnh đều dùng SqlParameter (chống SQL Injection).</summary>
+
     public class SanPhamDAL
     {
         public DataTable LayTatCa()
@@ -16,7 +16,7 @@ namespace QuanLyBanHang.DAL
             return dt;
         }
 
-        /// <summary>Tìm theo tên hoặc mã vạch: LIKE @tuKhoa với ký tự đại diện % nằm trong giá trị tham số.</summary>
+     
         public DataTable TimKiem(string tuKhoa)
         {
             using var conn = DBConnection.GetConnection();
