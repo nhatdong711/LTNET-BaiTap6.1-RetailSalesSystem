@@ -3,7 +3,7 @@ using QuanLyBanHang.DTO;
 
 namespace QuanLyBanHang.GUI
 {
-    /// <summary>Quản lý Khách hàng (CRUD + tìm kiếm).</summary>
+   
     public class FrmKhachHang : Form
     {
         private readonly KhachHangBUS bus = new();
